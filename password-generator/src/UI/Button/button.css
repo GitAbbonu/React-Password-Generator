@@ -1,0 +1,12 @@
+.btn {
+  height: 50px;
+  background: #059c02;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=button.css.map */
