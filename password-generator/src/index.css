@@ -6,15 +6,14 @@ body {
   background-color: #059c02;
 
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 30px;
 }
 
 h3 {
   margin: 25px 0;
-  font-size: 30px;
+  font-size: 26px;
 }

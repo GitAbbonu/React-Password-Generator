@@ -84,6 +84,12 @@
   grid-gap: 2em;
   transform: scale(1);
 }
+@media (min-width: 800px) {
+  .container-checkbox {
+    flex-direction: row;
+    margin: 60px;
+  }
+}
 
 label[for*=checkbox] {
   cursor: pointer;

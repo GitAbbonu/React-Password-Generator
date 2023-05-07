@@ -1,14 +1,75 @@
 .pass-container {
   width: 100%;
+  max-width: 1500px;
   background-color: #fff;
-  margin-top: 200px;
+  margin: 80px 0;
   border-radius: 8px;
+  padding: 10%;
+  @media (min-width: 800px) {
+    padding: 0;
+  }
 }
 
 .pass-content-cont {
-  padding: 4%;
   display: flex;
   flex-direction: column;
 
   justify-content: center;
+  @media (min-width: 800px) {
+    padding: 4%;
+  }
+}
+
+.pass-range {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input[type="number"] {
+    box-shadow: inset 0 2px 6px 0 rgba(0, 0, 0, 0.25);
+    border: none;
+    border-radius: 8px;
+    height: 40px;
+    width: 60px;
+    margin-right: 5px;
+    text-align: center;
+  }
+}
+
+// now for the good stuff 🎉
+input[type="range"] {
+  outline: 0;
+  border: 0;
+  border-radius: 500px;
+  width: 100%;
+  margin: 20px 0;
+  transition: box-shadow 0.2s ease-in-out;
+
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    & {
+      overflow: hidden;
+      height: 20px;
+      -webkit-appearance: none;
+      background-color: #ddd;
+    }
+    &::-webkit-slider-runnable-track {
+      -webkit-appearance: none;
+      color: #444;
+    }
+    &::-webkit-slider-thumb {
+      width: 20px;
+      -webkit-appearance: none;
+      height: 20px;
+      cursor: ew-resize;
+      background: #fff;
+      box-shadow: -340px 0 0 330px #1aeb60, inset 0 0 0 40px #1aeb60;
+      border-radius: 50%;
+      transition: box-shadow 0.2s ease-in-out;
+      position: relative;
+    }
+    &:active::-webkit-slider-thumb {
+      background: #fff;
+      box-shadow: -340px 0 0 330px #1aeb60, inset 0 0 0 3px #1aeb60;
+    }
+  }
 }
