@@ -50,7 +50,7 @@
   --body-bg-color: hsl(221deg 16% 12%);
   --checkbox-color-hue: 216;
   --checkbox-color-saturation: 17;
-  --checkbox-color-lightness: 15;
+  --checkbox-color-lightness: 96;
   --checkbox-color: hsl(
     calc(var(--checkbox-color-hue) * 1deg) /**/
       calc(var(--checkbox-color-saturation) * 1%) /**/
@@ -58,20 +58,15 @@
   );
   --checkbox-color-light: rgba(255 255 255 / 32%);
   --checkbox-color-dark: rgba(0 0 0 / 45%);
-  /* -- Box */
   --checkbox-border-radius: 24%;
   --checkbox-width: 36;
   --checkbox-height: 36;
-  --text-opacity: 0.6;
   --negative-shadow-offset: 500;
   --active-shadow-opacity: 0;
-  /* -- icon */
   --icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' class='feather feather-check'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
   --icon-opacity: 0;
   --icon-size: 1;
-  /* -- easing */
   --cubic-bezier: cubic-bezier(0.6, -1.2, 0.2, 2.2);
-  /* -- misc */
   --debug: 0;
 }
 
@@ -104,24 +99,6 @@ label[for*=checkbox] {
   /* label:after */
   /* label input[type="checkbox"] */
 }
-label[for*=checkbox]:hover {
-  --text-opacity: 1;
-}
-label[for*=checkbox]:hover:after {
-  --icon-opacity: 0.5;
-  --icon-invert: 100;
-  --icon-size: 0.8;
-}
-label[for*=checkbox]:hover input[type=checkbox] {
-  --checkbox-color-hue: 216;
-  --checkbox-color-saturation: 14;
-  --checkbox-color-lightness: 18;
-  --checkbox-color: hsl(
-    calc(var(--checkbox-color-hue) * 1deg)
-      calc(var(--checkbox-color-saturation) * 1%)
-      calc(var(--checkbox-color-lightness) * 1%)
-  );
-}
 label[for*=checkbox]:after {
   content: "";
   display: block;
@@ -136,15 +113,11 @@ label[for*=checkbox]:after {
   border-radius: var(--checkbox-border-radius);
   pointer-events: none;
   background-image: var(--icon-check);
-  filter: invert(100%);
-  opacity: var(--icon-opacity);
-  transform: scale(var(--icon-size));
   /* here I couldn't animate --icon-invert */
   transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s var(--cubic-bezier);
 }
 label[for*=checkbox]:has(input[type=checkbox]:checked):after {
   --icon-opacity: 1;
-  filter: invert(0%);
 }
 label[for*=checkbox] input[type=checkbox] {
   appearance: none;
