@@ -14,6 +14,9 @@ function PasswGen() {
   });
 
   const [password, setPassword] = useState("password");
+  const [chars, setChars] = useState(
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+~`|}{[]:;?><,./-="
+  );
 
   useEffect(() => {
     if (lunPassw >= 4 && lunPassw < 8) {
@@ -29,13 +32,26 @@ function PasswGen() {
     }
   }, [lunPassw]);
 
+  useEffect(() => {}, [passwSettings]);
+
+  function generatePassword() {
+    let password = "";
+    for (let i = 0; i < lunPassw; i++) {
+      let randomChar = chars[Math.floor(Math.random() * chars.length)];
+      password += randomChar;
+    }
+    setPassword(password);
+  }
+
+  // console.log(generatePassword()); // Output esempio: "KjL7^Pd@"
+
   return (
     <div className="pass-container">
       <div className="pass-content-cont">
         <h1>Password Generator</h1>
         <div>
           <div className="passw-generator">
-            <input type="text" value={password} />
+            <input type="text" value={password} readOnly />
           </div>
           <div className="passw-generator-color" style={styleColor}></div>
         </div>
@@ -64,7 +80,7 @@ function PasswGen() {
             setPasswSettings={setPasswSettings}
           />
         </div>
-        <Button>Generate Password</Button>
+        <Button click={generatePassword}>Generate Password</Button>
       </div>
     </div>
   );
