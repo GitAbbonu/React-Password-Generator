@@ -13,10 +13,16 @@ function PasswGen() {
     symbols: true,
   });
 
+  const num = "0123456789";
+  const low = "abcdefghijklmnopqrstuvwxyz";
+  const upp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const sym = "!@#$%^&*()_+~`|}{[]:;?><,./-=";
+
   const [password, setPassword] = useState("password");
-  const [chars, setChars] = useState(
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+~`|}{[]:;?><,./-="
-  );
+  // const [chars, setChars] = useState(
+  //   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+~`|}{[]:;?><,./-="
+  // );
+  const [chars, setChars] = useState([num, low, upp, sym]);
 
   useEffect(() => {
     if (lunPassw >= 4 && lunPassw < 8) {
@@ -32,15 +38,29 @@ function PasswGen() {
     }
   }, [lunPassw]);
 
-  useEffect(() => {}, [passwSettings]);
+  useEffect(() => {
+    if (passwSettings.numbers) {
+    } else {
+    }
+  }, [passwSettings]);
 
   function generatePassword() {
     let password = "";
-    for (let i = 0; i < lunPassw; i++) {
-      let randomChar = chars[Math.floor(Math.random() * chars.length)];
-      password += randomChar;
+    if (
+      !passwSettings.numbers &&
+      !passwSettings.lowercase &&
+      !passwSettings.uppercase &&
+      !passwSettings.symbols
+    ) {
+      password = "Please select an option.";
+      setPassword(password);
+    } else {
+      for (let i = 0; i < lunPassw; i++) {
+        let randomChar = chars[Math.floor(Math.random() * chars.length)];
+        password += randomChar;
+      }
+      setPassword(password);
     }
-    setPassword(password);
   }
 
   // console.log(generatePassword()); // Output esempio: "KjL7^Pd@"
@@ -73,7 +93,7 @@ function PasswGen() {
           />
         </div>
         <div>
-          <h3>Password Settings:</h3>
+          <h3>Password Options:</h3>
 
           <Checkbox
             passwSettings={passwSettings}
